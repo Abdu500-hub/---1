@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منارة الإسلام</title>
+    <style>
+        /* التنسيقات الأساسية للجسم والخلفية */
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-image: url('https://marketplace.canva.com/EAGbtj_A-tw/1/0/1600w/canva-%D8%AE%D9%84%D9%81%D9%8A%D8%A9-%D8%B3%D8%B7%D8%AD-%D9%85%D9%83%D8%AA%D8%A8-%D8%A8%D8%B3%D9%8A%D8%B7%D8%A9-%D8%A7%D8%B3%D9%84%D8%A7%D9%85%D9%8A%D8%A9-%D9%85%D8%B9-%D8%B5%D9%88%D8%B1%D8%A9-%D9%85%D8%B5%D8%AD%D9%81-HvZ-s-AFvlQ.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            flex-direction: column;
+        }
+
+        /* حاوية المحتوى الرئيسية */
+        .container {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            max-width: 900px;
+            width: 90%;
+            margin: 20px auto;
+            box-sizing: border-box;
+        }
+
+        /* تنسيقات رأس الصفحة (اللوجو والعنوان) */
+        header {
+            display: flex;
+            align-items: center; /* محاذاة اللوجو والعنوان أفقياً */
+            justify-content: center; /* توسيط المحتوى الأفقي */
+            margin-bottom: 40px;
+            flex-wrap: wrap; /* للسماح للعناصر بالالتفاف على الشاشات الصغيرة */
+            width: 100%; /* ضمان أن الرأس يأخذ كامل عرض الحاوية */
+        }
+
+        .logo {
+            width: 80px; /* حجم اللوجو */
+            height: 80px;
+            border-radius: 50%; /* لجعل اللوجو دائرياً */
+            margin-left: 20px; /* مسافة بين اللوجو والعنوان */
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+            object-fit: cover; /* لضمان تغطية الصورة للمساحة */
+            flex-shrink: 0; /* منع اللوجو من الانكماش */
+        }
+
+        header h1 {
+            color: #FFD700; /* لون ذهبي للعناوين */
+            font-size: 3em;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+            margin: 0; /* إزالة الهامش الافتراضي */
+            flex-grow: 1; /* السماح للعنصر بالتمدد */
+        }
+
+        /* تنسيقات الأزرار العامة */
+        .main-button, .tasbeeh-button, .back-button, .reset-button {
+            display: inline-block;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 1.8em;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        /* تنسيقات الصفحة الرئيسية */
+        .home-section {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            align-items: center;
+            padding: 20px;
+            width: 100%; /* تأكد أن القسم يأخذ كامل العرض */
+        }
+
+        .electronic-rosary-button, .adhkar-button, .hisnul-muslim-button {
+            background-color: #007BFF; /* أزرق */
+            color: #000000; /* أسود */
+            border: 2px solid #0056b3;
+            width: 80%;
+            max-width: 350px;
+        }
+
+        .electronic-rosary-button:hover, .adhkar-button:hover, .hisnul-muslim-button:hover {
+            background-color: #0056b3;
+            transform: translateY(-3px);
+        }
+
+        /* تنسيقات صفحة التسابيح */
+        .tasabeeh-section {
+            display: none; /* إخفاء في البداية */
+            flex-direction: column; /* لترتيب العناصر بشكل عمودي */
+            align-items: center;
+            gap: 25px;
+            padding-top: 20px;
+            width: 100%;
+        }
+
+        .tasbeeh-grid { /* لتنظيم بوكسات التسبيح في شبكة */
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            width: 100%;
+        }
+
+        .tasbeeh-box {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            padding: 20px;
+            width: calc(50% - 35px); /* لبوكسين في كل صف على الشاشات الكبيرة */
+            max-width: 250px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .counter-display {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #FFD700;
+            margin-bottom: 5px;
+        }
+
+        .tasbeeh-button {
+            background-color: #007BFF;
+            color: white;
+            padding: 12px 20px;
+            font-size: 1.3em;
+            width: 100%;
+            max-width: 200px;
+        }
+
+        .tasbeeh-button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        .reset-button {
+            background-color: grey;
+            color: white;
+            padding: 8px 15px;
+            font-size: 0.9em;
+        }
+
+        .reset-button:hover {
+            background-color: #555;
+        }
+
+        /* تنسيقات صفحة الأذكار وحصن المسلم */
+        .adhkar-section, .hisnul-muslim-section {
+            display: none; /* إخفاء في البداية */
+            padding-top: 20px;
+            width: 100%;
+            flex-direction: column; /* لجعل العناصر تتكدس عموديًا */
+            align-items: center; /* لتوسيط العناصر */
+        }
+
+        .adhkar-title, .hisnul-muslim-title {
+            color: #FFD700;
+            font-size: 2.5em;
+            margin-top: 40px;
+            margin-bottom: 25px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+        }
+
+        .adhkar-image, .hisnul-muslim-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            margin-bottom: 40px;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .adhkar-image.large-image, .hisnul-muslim-image.large-image {
+            max-width: 90%;
+            width: 800px;
+        }
+        
+        .hisnul-muslim-image.extra-large {
+            max-width: 100%; /* اجعلها أكبر ما يمكن */
+            width: 100%;
+            height: auto;
+        }
+
+        /* زر العودة للصفحة الرئيسية */
+        .back-button {
+            background-color: darkgreen;
+            color: white;
+            margin-top: 40px;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .back-button:hover {
+            background-color: #005f00;
+            transform: translateY(-2px);
+        }
+
+        /* Media Queries للتجاوب مع الشاشات المختلفة */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column; /* جعل اللوجو والعنوان فوق بعض على الشاشات الصغيرة */
+                margin-bottom: 20px;
+            }
+            .logo {
+                margin-left: 0;
+                margin-bottom: 15px; /* مسافة أسفل اللوجو */
+            }
+            header h1 {
+                font-size: 2.5em;
+            }
+
+            .main-button {
+                font-size: 1.5em;
+                padding: 12px 25px;
+                width: 90%;
+            }
+
+            .tasbeeh-box {
+                width: 90%; /* بوكس واحد في كل صف على الشاشات الصغيرة */
+                max-width: none;
+            }
+
+            .tasbeeh-button {
+                font-size: 1.2em;
+            }
+
+            .adhkar-title, .hisnul-muslim-title {
+                font-size: 2em;
+            }
+
+            .adhkar-image.large-image, .hisnul-muslim-image.large-image, .hisnul-muslim-image.extra-large {
+                width: 100%;
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            .main-button {
+                font-size: 1.3em;
+                padding: 10px 20px;
+            }
+
+            .tasbeeh-button {
+                font-size: 1em;
+                padding: 10px 15px;
+            }
+
+            .counter-display {
+                font-size: 1.2em;
+            }
+
+            .adhkar-title, .hisnul-muslim-title {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <section id="homePage" class="home-section">
+            <header>
+                <img src="https://marketplace.canva.com/EAGbtj_A-tw/1/0/1600w/canva-%D8%AE%D9%84%D9%81%D9%8A%D8%A9-%D8%B3%D8%B7%D8%AD-%D9%85%D9%83%D8%AA%D8%A8-%D8%A8%D8%B3%D9%8A%D8%B7%D8%A9-%D8%A7%D8%B3%D9%84%D8%A7%D9%85%D9%8A%D8%A9-%D9%85%D8%B9-%D8%B5%D9%88%D8%B1%D8%A9-%D9%85%D8%B5%D8%AD%D9%81-HvZ-s-AFvlQ.jpg" alt="منارة الإسلام لوجو" class="logo">
+                <h1>منارة الإسلام</h1>
+            </header>
+            <button class="main-button electronic-rosary-button" onclick="showSection('tasabeehPage')">
+                سبحة إلكترونية
+            </button>
+            <button class="main-button adhkar-button" onclick="showSection('adhkarPage')">
+                الأذكار
+            </button>
+            <button class="main-button hisnul-muslim-button" onclick="showSection('hisnulMuslimPage')">
+                حصن المسلم
+            </button>
+        </section>
+
+        <section id="tasabeehPage" class="tasabeeh-section">
+            <header>
+                <img src="https://marketplace.canva.com/EAGbtj_A-tw/1/0/1600w/canva-%D8%AE%D9%84%D9%81%D9%8A%D8%A9-%D8%B3%D8%B7%D8%AD-%D9%85%D9%83%D8%AA%D8%A8-%D8%B3%D9%8A%D8%B7%D8%A9-%D8%A7%D8%B3%D9%84%D8%A7%D9%85%D9%8A%D8%A9-%D9%85%D8%B9-%D8%B5%D9%88%D8%B1%D8%A9-%D9%85%D8%B5%D8%AD%D9%81-HvZ-s-AFvlQ.jpg" alt="منارة الإسلام لوجو" class="logo">
+                <h1>تسابيح</h1>
+            </header>
+            <div class="tasbeeh-grid">
+                <div class="tasbeeh-box">
+                    <p class="counter-display" id="hamdCounter">عدد مرات التسبيح: 0</p>
+                    <button class="tasbeeh-button" onclick="incrementCounter('hamdCounter')">الحمد لله</button>
+                    <button class="reset-button" onclick="resetCounter('hamdCounter')">تصفير</button>
+                </div>
+
+                <div class="tasbeeh-box">
+                    <p class="counter-display" id="salatCounter">عدد مرات التسبيح: 0</p>
+                    <button class="tasbeeh-button" onclick="incrementCounter('salatCounter')">اللهم صل على سيدنا محمد</button>
+                    <button class="reset-button" onclick="resetCounter('salatCounter')">تصفير</button>
+                </div>
+
+                <div class="tasbeeh-box">
+                    <p class="counter-display" id="istighfarCounter">عدد مرات التسبيح: 0</p>
+                    <button class="tasbeeh-button" onclick="incrementCounter('istighfarCounter')">استغفر الله العظيم</button>
+                    <button class="reset-button" onclick="resetCounter('istighfarCounter')">تصفير</button>
+                </div>
+
+                <div class="tasbeeh-box">
+                    <p class="counter-display" id="takbeerCounter">عدد مرات التسبيح: 0</p>
+                    <button class="tasbeeh-button" onclick="incrementCounter('takbeerCounter')">الله أكبر</button>
+                    <button class="reset-button" onclick="resetCounter('takbeerCounter')">تصفير</button>
+                </div>
+
+                <div class="tasbeeh-box">
+                    <p class="counter-display" id="subhanCounter">عدد مرات التسبيح: 0</p>
+                    <button class="tasbeeh-button" onclick="incrementCounter('subhanCounter')">سبحان الله</button>
+                    <button class="reset-button" onclick="resetCounter('subhanCounter')">تصفير</button>
+                </div>
+
+                <div class="tasbeeh-box">
+                    <p class="counter-display" id="laIlahaIllaAllahCounter">عدد مرات التسبيح: 0</p>
+                    <button class="tasbeeh-button" onclick="incrementCounter('laIlahaIllaAllahCounter')">لا إله إلا الله</button>
+                    <button class="reset-button" onclick="resetCounter('laIlahaIllaAllahCounter')">تصفير</button>
+                </div>
+
+                <div class="tasbeeh-box">
+                    <p class="counter-display" id="afwCounter">عدد مرات التسبيح: 0</p>
+                    <button class="tasbeeh-button" onclick="incrementCounter('afwCounter')">اللهم إنك عفو كريم تحب العفو فاعفو
+                        عني</button>
+                    <button class="reset-button" onclick="resetCounter('afwCounter')">تصفير</button>
+                </div>
+
+                <div class="tasbeeh-box">
+                    <p class="counter-display" id="hawlCounter">عدد مرات التسبيح: 0</p>
+                    <button class="tasbeeh-button" onclick="incrementCounter('hawlCounter')">لا حول ولا قوة إلا بالله</button>
+                    <button class="reset-button" onclick="resetCounter('hawlCounter')">تصفير</button>
+                </div>
+                </div>
+            <button class="back-button" onclick="showSection('homePage')">العودة للصفحة الرئيسية</button>
+        </section>
+
+        <section id="adhkarPage" class="adhkar-section">
+            <header>
+                <img src="https://marketplace.canva.com/EAGbtj_A-tw/1/0/1600w/canva-%D8%AE%D9%84%D9%81%D9%8A%D8%A9-%D8%B3%D8%B7%D8%AD-%D9%85%D9%83%D8%AA%D8%A8-%D8%A8%D8%B3%D9%8A%D8%B7%D8%A9-%D8%A7%D8%B3%D9%84%D8%A7%D9%85%D9%8A%D8%A9-%D9%85%D8%B9-%D8%B5%D9%88%D8%B1%D8%A9-%D9%85%D8%B5%D8%AD%D9%81-HvZ-s-AFvlQ.jpg" alt="منارة الإسلام لوجو" class="logo">
+                <h1>الأذكار</h1>
+            </header>
+            <h2 class="adhkar-title">أذكار الصباح</h2>
+            <img src="https://i.pinimg.com/originals/31/1e/52/311e528e80d1b904ed2f054611a0a1f5.jpg" alt="أذكار الصباح" class="adhkar-image">
+
+            <h2 class="adhkar-title">أذكار المساء</h2>
+            <img src="https://i.pinimg.com/564x/b5/75/86/b57586a21f0b5c58048799c9f47b187a.jpg" alt="أذكار المساء" class="adhkar-image large-image">
+
+            <button class="back-button" onclick="showSection('homePage')">العودة للصفحة الرئيسية</button>
+        </section>
+
+        <section id="hisnulMuslimPage" class="hisnul-muslim-section">
+            <header>
+                <img src="https://marketplace.canva.com/EAGbtj_A-tw/1/0/1600w/canva-%D8%AE%D9%84%D9%81%D9%8A%D8%A9-%D8%B3%D8%B7%D8%AD-%D9%85%D9%83%D8%AA%D8%A8-%D8%A8%D8%B3%D9%8A%D8%B7%D8%A9-%D8%A7%D8%B3%D9%84%D8%A7%D9%85%D9%8A%D8%A9-%D9%85%D8%B9-%D8%B5%D9%88%D8%B1%D8%A9-%D9%85%D8%B5%D8%AD%D9%81-HvZ-s-AFvlQ.jpg" alt="منارة الإسلام لوجو" class="logo">
+                <h1>حصن المسلم</h1>
+            </header>
+            <h2 class="hisnul-muslim-title">أدعية قبل النوم</h2>
+            <img src="https://i.pinimg.com/564x/f9/ab/5a/f9ab5a66fd190d18f65f9558ede8a99f.jpg" alt="أدعية قبل النوم" class="hisnul-muslim-image extra-large">
+
+            <h2 class="hisnul-muslim-title">ابدأ يومك بالدعاء</h2>
+            <img src="https://pbs.twimg.com/media/GPC6ygVXUAEQ8nb.jpg" alt="ابدأ يومك بالدعاء" class="hisnul-muslim-image large-image">
+
+            <h2 class="hisnul-muslim-title">أدعية مختلفة</h2>
+            <img src="https://amwcdn.com/featured/33680/conversions/845c66c8b1-full-webp.webp" alt="دعاء للجميع بالتوفيق" class="hisnul-muslim-image large-image">
+            <img src="https://version.helmelarab.com/wp-content/uploads/2023/07/%D8%AF%D8%B9%D8%A7%D8%A1-%D9%84%D9%84%D8%AC%D9%85%D9%8A%D8%B9-%D8%A8%D8%A7%D9%84%D8%AA%D9%88%D9%81%D9%8A%D9%82-683x1024.webp" alt="دعاء للجميع بالتوفيق" class="hisnul-muslim-image large-image">
+            <img src="https://i2.wp.com/imgs.photo/%D8%A3%D8%AF%D8%B9%D9%8A%D8%A9-%D9%84%D9%84%D8%B1%D8%A7%D8%AD%D8%A9-%D8%A7%D9%84%D9%86%D9%81%D8%B3%D9%8A%D8%A9-%D9%88%D9%84%D8%B5%D8%A7%D9%84%D8%AD-%D8%A7%D9%84%D8%B9%D8%A7%D8%A6%D9%84%D8%A9.webp" alt="أدعية للراحة النفسية" class="hisnul-muslim-image large-image">
+
+            <button class="back-button" onclick="showSection('homePage')">العودة للصفحة الرئيسية</button>
+        </section>
+    </div>
+
+    <script>
+        // دالة لعرض وإخفاء الأقسام (الصفحات)
+        function showSection(sectionId) {
+            document.getElementById('homePage').style.display = 'none';
+            document.getElementById('tasabeehPage').style.display = 'none';
+            document.getElementById('adhkarPage').style.display = 'none';
+            document.getElementById('hisnulMuslimPage').style.display = 'none'; // إضافة إخفاء لصفحة حصن المسلم
+
+            // تحديد طريقة العرض المناسبة لكل قسم
+            if (sectionId === 'homePage') {
+                document.getElementById(sectionId).style.display = 'flex';
+            } else if (sectionId === 'tasabeehPage') {
+                document.getElementById(sectionId).style.display = 'flex'; // لترتيب البوكسات بشكل عمودي
+            } else if (sectionId === 'adhkarPage' || sectionId === 'hisnulMuslimPage') {
+                document.getElementById(sectionId).style.display = 'flex'; // لترتيب الصور تحت بعضها
+            }
+
+            // تحديث عنوان الصفحة في تبويب المتصفح
+            if (sectionId === 'homePage') {
+                document.title = 'منارة الإسلام';
+            } else if (sectionId === 'tasabeehPage') {
+                document.title = 'تسابيح';
+            } else if (sectionId === 'adhkarPage') {
+                document.title = 'الأذكار';
+            } else if (sectionId === 'hisnulMuslimPage') { // تحديث عنوان صفحة حصن المسلم
+                document.title = 'حصن المسلم';
+            }
+        }
+
+        // دالة لزيادة عداد التسبيح
+        function incrementCounter(counterId) {
+            const counterElement = document.getElementById(counterId);
+            if (counterElement) {
+                let count = parseInt(counterElement.textContent.split(': ')[1]);
+                count++;
+                counterElement.textContent = `عدد مرات التسبيح: ${count}`;
+                localStorage.setItem(counterId, count); // حفظ القيمة
+            }
+        }
+
+        // دالة لتصفير عداد التسبيح
+        function resetCounter(counterId) {
+            const counterElement = document.getElementById(counterId);
+            if (counterElement) {
+                counterElement.textContent = `عدد مرات التسبيح: 0`;
+                localStorage.setItem(counterId, 0); // تصفير القيمة
+            }
+        }
+
+        // عند تحميل الصفحة، اظهر الصفحة الرئيسية وحمل العدادات المحفوظة
+        document.addEventListener('DOMContentLoaded', () => {
+            showSection('homePage'); // إظهار الصفحة الرئيسية عند التحميل
+            const counters = [
+                'hamdCounter', 
+                'salatCounter', 
+                'istighfarCounter', 
+                'takbeerCounter', 
+                'subhanCounter',
+                'laIlahaIllaAllahCounter',
+                'afwCounter',
+                'hawlCounter'
+            ];
+            counters.forEach(id => {
+                const savedCount = localStorage.getItem(id);
+                if (savedCount !== null) {
+                    const counterElement = document.getElementById(id);
+                    if (counterElement) {
+                        counterElement.textContent = `عدد مرات التسبيح: ${savedCount}`;
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
