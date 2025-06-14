@@ -9,7 +9,7 @@
         body {
             margin: 0;
             font-family: 'Arial', sans-serif;
-            background-image: url('https://marketplace.canva.com/EAGbtj_A-tw/1/0/1600w/canva-%D8%AE%D9%84%D9%81%D9%8A%D8%A9-%D8%B3%D8%B7%D8%AD-%D9%85%D9%83%D8%AA%D8%A8-%D8%A8%D8%B3%D9%8A%D8%B7%D8%A9-%D8%A7%D8%B3%D9%84%D8%A7%D9%85%D9%8A%D8%A9-%D9%85%D8%B9-%D8%B5%D9%88%D8%B1%D8%A9-%D9%85%D8%B5%D8%AD%D9%81-HvZ-s-AFvlQ.jpg');
+            background-image: url('https://marketplace.canva.com/EAGbtj_A-tw/1/0/1600w/canva-%D8%AE%D9%84%D9%81%D9%8A%D8%A9-%D8%B3%D8%B7%D8%AD-%D9%85%D9%83%D8%AA%D8%A8-%D8%B3%D9%8A%D8%B7%D8%A9-%D8%A7%D8%B3%D9%84%D8%A7%D9%85%D9%8A%D8%A9-%D9%85%D9%85%D8%B9-%D8%B5%D9%88%D8%B1%D8%A9-%D9%85%D8%B5%D8%AD%D9%81-HvZ-s-AFvlQ.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -214,6 +214,26 @@
             transform: translateY(-2px);
         }
 
+        /* تنسيقات علم فلسطين */
+        .palestine-flag {
+            max-width: 250px; /* حجم مناسب للعلم */
+            height: auto;
+            margin-bottom: 30px; /* مسافة بين العلم والرأس */
+            border-radius: 8px; /* حواف مستديرة للعلم */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); /* ظل خفيف */
+        }
+
+        /* تنسيقات iframe لملف PDF */
+        .pdf-viewer {
+            width: 100%; /* اجعله يملأ العرض المتاح */
+            height: 600px; /* ارتفاع افتراضي، يمكن تعديله حسب الحاجة */
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            margin-top: 30px; /* مسافة من الصورة العلوية */
+            margin-bottom: 30px; /* مسافة قبل زر العودة */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+
         /* Media Queries للتجاوب مع الشاشات المختلفة */
         @media (max-width: 768px) {
             header {
@@ -251,6 +271,13 @@
                 width: 100%;
                 max-width: 100%;
             }
+            .palestine-flag {
+                max-width: 180px; /* تصغير حجم العلم على الشاشات الصغيرة */
+                margin-bottom: 20px;
+            }
+            .pdf-viewer {
+                height: 450px; /* تقليل ارتفاع الـ PDF على الشاشات الصغيرة */
+            }
         }
 
         @media (max-width: 480px) {
@@ -275,16 +302,25 @@
             .adhkar-title, .hisnul-muslim-title {
                 font-size: 1.8em;
             }
+            .palestine-flag {
+                max-width: 150px; /* تصغير أكبر للعلم على أصغر الشاشات */
+            }
+            .pdf-viewer {
+                height: 350px; /* تقليل ارتفاع الـ PDF على أصغر الشاشات */
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <section id="homePage" class="home-section">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Flag_of_Palestine.svg/1280px-Flag_of_Palestine.svg.png" alt="علم فلسطين" class="palestine-flag">
+
             <header>
-                <img src="https://marketplace.canva.com/EAGbtj_A-tw/1/0/1600w/canva-%D8%AE%D9%84%D9%81%D9%8A%D8%A9-%D8%B3%D8%B7%D8%AD-%D9%85%D9%83%D8%AA%D8%A8-%D8%A8%D8%B3%D9%8A%D8%B7%D8%A9-%D8%A7%D8%B3%D9%84%D8%A7%D9%85%D9%8A%D8%A9-%D9%85%D8%B9-%D8%B5%D9%88%D8%B1%D8%A9-%D9%85%D8%B5%D8%AD%D9%81-HvZ-s-AFvlQ.jpg" alt="منارة الإسلام لوجو" class="logo">
+                <img src="https://marketplace.canva.com/EAGbtj_A-tw/1/0/1600w/canva-%D8%AE%D9%84%D9%81%D9%8A%D8%A9-%D8%B3%D8%B7%D8%AD-%D9%85%D9%83%D8%AA%D8%A8-%D8%B3%D9%8A%D8%B7%D8%A9-%D8%A7%D8%B3%D9%84%D8%A7%D9%85%D9%8A%D8%A9-%D9%85%D9%85%D8%B9-%D8%B5%D9%88%D8%B1%D8%A9-%D9%85%D8%B5%D8%AD%D9%81-HvZ-s-AFvlQ.jpg" alt="منارة الإسلام لوجو" class="logo">
                 <h1>منارة الإسلام</h1>
             </header>
+            
             <button class="main-button electronic-rosary-button" onclick="showSection('tasabeehPage')">
                 سبحة إلكترونية
             </button>
@@ -298,7 +334,7 @@
 
         <section id="tasabeehPage" class="tasabeeh-section">
             <header>
-                <img src="https://marketplace.canva.com/EAGbtj_A-tw/1/0/1600w/canva-%D8%AE%D9%84%D9%81%D9%8A%D8%A9-%D8%B3%D8%B7%D8%AD-%D9%85%D9%83%D8%AA%D8%A8-%D8%B3%D9%8A%D8%B7%D8%A9-%D8%A7%D8%B3%D9%84%D8%A7%D9%85%D9%8A%D8%A9-%D9%85%D8%B9-%D8%B5%D9%88%D8%B1%D8%A9-%D9%85%D8%B5%D8%AD%D9%81-HvZ-s-AFvlQ.jpg" alt="منارة الإسلام لوجو" class="logo">
+                <img src="https://marketplace.canva.com/EAGbtj_A-tw/1/0/1600w/canva-%D8%AE%D9%84%D9%81%D9%8A%D8%A9-%D8%B3%D8%B7%D8%AD-%D9%85%D9%83%D8%AA%D8%A8-%D8%B3%D9%8A%D8%B7%D8%A9-%D8%A7%D8%B3%D9%84%D8%A7%D9%85%D9%8A%D8%A9-%D9%85%D9%85%D8%B9-%D8%B5%D9%88%D8%B1%D8%A9-%D9%85%D8%B5%D8%AD%D9%81-HvZ-s-AFvlQ.jpg" alt="منارة الإسلام لوجو" class="logo">
                 <h1>تسابيح</h1>
             </header>
             <div class="tasbeeh-grid">
@@ -340,8 +376,7 @@
 
                 <div class="tasbeeh-box">
                     <p class="counter-display" id="afwCounter">عدد مرات التسبيح: 0</p>
-                    <button class="tasbeeh-button" onclick="incrementCounter('afwCounter')">اللهم إنك عفو كريم تحب العفو فاعفو
-                        عني</button>
+                    <button class="tasbeeh-button" onclick="incrementCounter('afwCounter')">اللهم إنك عفو كريم تحب العفو فاعف عني</button>
                     <button class="reset-button" onclick="resetCounter('afwCounter')">تصفير</button>
                 </div>
 
@@ -350,39 +385,42 @@
                     <button class="tasbeeh-button" onclick="incrementCounter('hawlCounter')">لا حول ولا قوة إلا بالله</button>
                     <button class="reset-button" onclick="resetCounter('hawlCounter')">تصفير</button>
                 </div>
-                </div>
+            </div>
             <button class="back-button" onclick="showSection('homePage')">العودة للصفحة الرئيسية</button>
         </section>
 
         <section id="adhkarPage" class="adhkar-section">
             <header>
-                <img src="https://marketplace.canva.com/EAGbtj_A-tw/1/0/1600w/canva-%D8%AE%D9%84%D9%81%D9%8A%D8%A9-%D8%B3%D8%B7%D8%AD-%D9%85%D9%83%D8%AA%D8%A8-%D8%A8%D8%B3%D9%8A%D8%B7%D8%A9-%D8%A7%D8%B3%D9%84%D8%A7%D9%85%D9%8A%D8%A9-%D9%85%D8%B9-%D8%B5%D9%88%D8%B1%D8%A9-%D9%85%D8%B5%D8%AD%D9%81-HvZ-s-AFvlQ.jpg" alt="منارة الإسلام لوجو" class="logo">
+                <img src="https://marketplace.canva.com/EAGbtj_A-tw/1/0/1600w/canva-%D8%AE%D9%84%D9%81%D9%8A%D8%A9-%D8%B3%D8%B7%D8%AD-%D9%85%D9%83%D8%AA%D8%A8-%D8%B3%D9%8A%D8%B7%D8%A9-%D8%A7%D8%B3%D9%84%D8%A7%D9%85%D9%8A%D8%A9-%D9%85%D9%85%D8%B9-%D8%B5%D9%88%D8%B1%D8%A9-%D9%85%D8%B5%D8%AD%D9%81-HvZ-s-AFvlQ.jpg" alt="منارة الإسلام لوجو" class="logo">
                 <h1>الأذكار</h1>
             </header>
             <h2 class="adhkar-title">أذكار الصباح</h2>
-            <img src="https://i.pinimg.com/originals/31/1e/52/311e528e80d1b904ed2f054611a0a1f5.jpg" alt="أذكار الصباح" class="adhkar-image">
+            <img src="https://i.pinimg.com/originals/31/1e/52/311e528e80d1b904ed2f054611a0a1f5.jpg" alt="أذكار الصباح" class="adhkar-image" loading="lazy">
 
             <h2 class="adhkar-title">أذكار المساء</h2>
-            <img src="https://i.pinimg.com/564x/b5/75/86/b57586a21f0b5c58048799c9f47b187a.jpg" alt="أذكار المساء" class="adhkar-image large-image">
+            <img src="https://i.pinimg.com/564x/b5/75/86/b57586a21f0b5c58048799c9f47b187a.jpg" alt="أذكار المساء" class="adhkar-image large-image" loading="lazy">
 
             <button class="back-button" onclick="showSection('homePage')">العودة للصفحة الرئيسية</button>
         </section>
 
         <section id="hisnulMuslimPage" class="hisnul-muslim-section">
             <header>
-                <img src="https://marketplace.canva.com/EAGbtj_A-tw/1/0/1600w/canva-%D8%AE%D9%84%D9%81%D9%8A%D8%A9-%D8%B3%D8%B7%D8%AD-%D9%85%D9%83%D8%AA%D8%A8-%D8%A8%D8%B3%D9%8A%D8%B7%D8%A9-%D8%A7%D8%B3%D9%84%D8%A7%D9%85%D9%8A%D8%A9-%D9%85%D8%B9-%D8%B5%D9%88%D8%B1%D8%A9-%D9%85%D8%B5%D8%AD%D9%81-HvZ-s-AFvlQ.jpg" alt="منارة الإسلام لوجو" class="logo">
+                <img src="https://marketplace.canva.com/EAGbtj_A-tw/1/0/1600w/canva-%D8%AE%D9%84%D9%81%D9%8A%D8%A9-%D8%B3%D8%B7%D8%AD-%D9%85%D9%83%D8%AA%D8%A8-%D8%B3%D9%8A%D8%B7%D8%A9-%D8%A7%D8%B3%D9%84%D8%A7%D9%85%D9%8A%D8%A9-%D9%85%D9%85%D8%B9-%D8%B5%D9%88%D8%B1%D8%A9-%D9%85%D9%85%D8%B5%D8%AD%D9%81-HvZ-s-AFvlQ.jpg" alt="منارة الإسلام لوجو" class="logo">
                 <h1>حصن المسلم</h1>
             </header>
             <h2 class="hisnul-muslim-title">أدعية قبل النوم</h2>
-            <img src="https://i.pinimg.com/564x/f9/ab/5a/f9ab5a66fd190d18f65f9558ede8a99f.jpg" alt="أدعية قبل النوم" class="hisnul-muslim-image extra-large">
+            <img src="https://i.pinimg.com/564x/f9/ab/5a/f9ab5a66fd190d18f65f9558ede8a99f.jpg" alt="أدعية قبل النوم" class="hisnul-muslim-image extra-large" loading="lazy">
 
             <h2 class="hisnul-muslim-title">ابدأ يومك بالدعاء</h2>
-            <img src="https://pbs.twimg.com/media/GPC6ygVXUAEQ8nb.jpg" alt="ابدأ يومك بالدعاء" class="hisnul-muslim-image large-image">
+            <img src="https://pbs.twimg.com/media/GPC6ygVXUAEQ8nb.jpg" alt="ابدأ يومك بالدعاء" class="hisnul-muslim-image large-image" loading="lazy">
 
             <h2 class="hisnul-muslim-title">أدعية مختلفة</h2>
-            <img src="https://amwcdn.com/featured/33680/conversions/845c66c8b1-full-webp.webp" alt="دعاء للجميع بالتوفيق" class="hisnul-muslim-image large-image">
-            <img src="https://version.helmelarab.com/wp-content/uploads/2023/07/%D8%AF%D8%B9%D8%A7%D8%A1-%D9%84%D9%84%D8%AC%D9%85%D9%8A%D8%B9-%D8%A8%D8%A7%D9%84%D8%AA%D9%88%D9%81%D9%8A%D9%82-683x1024.webp" alt="دعاء للجميع بالتوفيق" class="hisnul-muslim-image large-image">
-            <img src="https://i2.wp.com/imgs.photo/%D8%A3%D8%AF%D8%B9%D9%8A%D8%A9-%D9%84%D9%84%D8%B1%D8%A7%D8%AD%D8%A9-%D8%A7%D9%84%D9%86%D9%81%D8%B3%D9%8A%D8%A9-%D9%88%D9%84%D8%B5%D8%A7%D9%84%D8%AD-%D8%A7%D9%84%D8%B9%D8%A7%D8%A6%D9%84%D8%A9.webp" alt="أدعية للراحة النفسية" class="hisnul-muslim-image large-image">
+            <img src="https://amwcdn.com/featured/33680/conversions/845c66c8b1-full-webp.webp" alt="دعاء للجميع بالتوفيق" class="hisnul-muslim-image large-image" loading="lazy">
+            <img src="https://version.helmelarab.com/wp-content/uploads/2023/07/%D8%AF%D8%B9%D8%A7%D8%A1-%D9%84%D9%84%D8%AC%D9%85%D9%8A%D8%B9-%D8%A8%D8%A7%D9%84%D8%AA%D9%88%D9%81%D9%8A%D9%82-683x1024.webp" alt="دعاء للجميع بالتوفيق" class="hisnul-muslim-image large-image" loading="lazy">
+            <img src="https://i2.wp.com/imgs.photo/%D8%A3%D8%AF%D8%B9%D9%8A%D8%A9-%D9%84%D9%84%D8%B1%D8%A7%D8%AD%D8%A9-%D8%A7%D9%84%D9%86%D9%81%D8%B3%D9%8A%D8%A9-%D9%88%D9%84%D8%B5%D8%A7%D9%84%D8%AD-%D8%A7%D9%84%D8%B9%D8%A7%D8%A6%D9%84%D8%A9.webp" alt="أدعية للراحة النفسية" class="hisnul-muslim-image large-image" loading="lazy">
+            
+            <h2 class="hisnul-muslim-title">بعض جوامع دعاء النبي</h2>
+            <iframe src="مِن جوامع دعاء النبي ﷺ .pdf" class="pdf-viewer" frameborder="0"></iframe>
 
             <button class="back-button" onclick="showSection('homePage')">العودة للصفحة الرئيسية</button>
         </section>
@@ -394,15 +432,15 @@
             document.getElementById('homePage').style.display = 'none';
             document.getElementById('tasabeehPage').style.display = 'none';
             document.getElementById('adhkarPage').style.display = 'none';
-            document.getElementById('hisnulMuslimPage').style.display = 'none'; // إضافة إخفاء لصفحة حصن المسلم
+            document.getElementById('hisnulMuslimPage').style.display = 'none';
 
             // تحديد طريقة العرض المناسبة لكل قسم
             if (sectionId === 'homePage') {
                 document.getElementById(sectionId).style.display = 'flex';
             } else if (sectionId === 'tasabeehPage') {
-                document.getElementById(sectionId).style.display = 'flex'; // لترتيب البوكسات بشكل عمودي
+                document.getElementById(sectionId).style.display = 'flex';
             } else if (sectionId === 'adhkarPage' || sectionId === 'hisnulMuslimPage') {
-                document.getElementById(sectionId).style.display = 'flex'; // لترتيب الصور تحت بعضها
+                document.getElementById(sectionId).style.display = 'flex';
             }
 
             // تحديث عنوان الصفحة في تبويب المتصفح
@@ -412,7 +450,7 @@
                 document.title = 'تسابيح';
             } else if (sectionId === 'adhkarPage') {
                 document.title = 'الأذكار';
-            } else if (sectionId === 'hisnulMuslimPage') { // تحديث عنوان صفحة حصن المسلم
+            } else if (sectionId === 'hisnulMuslimPage') {
                 document.title = 'حصن المسلم';
             }
         }
@@ -440,11 +478,13 @@
         // عند تحميل الصفحة، اظهر الصفحة الرئيسية وحمل العدادات المحفوظة
         document.addEventListener('DOMContentLoaded', () => {
             showSection('homePage'); // إظهار الصفحة الرئيسية عند التحميل
+
+            // تحميل العدادات المحفوظة
             const counters = [
-                'hamdCounter', 
-                'salatCounter', 
-                'istighfarCounter', 
-                'takbeerCounter', 
+                'hamdCounter',
+                'salatCounter',
+                'istighfarCounter',
+                'takbeerCounter',
                 'subhanCounter',
                 'laIlahaIllaAllahCounter',
                 'afwCounter',
